@@ -1,4 +1,3 @@
-import "./style/index.less"
 import menu from './menu.vue'
 import subMenu from './subMenu.vue'
 import menuItemGroup from './menuItemGroup.vue'

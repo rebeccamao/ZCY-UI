@@ -3,7 +3,10 @@
     <header class="clearfix">
       <div class="zcy-row">
         <div class="zcy-col-xs-24 zcy-col-sm-7 zcy-col-md-6 zcy-col-lg-4">
-          <a id="logo" href="https://github.com/ZCY-frontend/ZCY-UI" target="_blank" title="github"><img alt="logo" src="./assets/zcy-logo.png"><span>ZCY-UI-Jquery</span></a>
+          <a id="logo" href="https://github.com/ZCY-frontend/ZCY-UI" target="_blank" title="github">
+            <img alt="logo" src="./assets/zcy-logo.png">
+            <span>ZCY-UI-Jquery</span>
+          </a>
         </div>
       </div>
 

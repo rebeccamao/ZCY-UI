@@ -1,21 +1,49 @@
-var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var config = require('./config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var env = config.build.env
 
-var webpackConfig = merge(baseWebpackConfig, {
+var webpackConfig = {
+  entry: {
+    app: './zcy/index.js'
+  },
+  resolve: {
+    extensions: ['.js']
+  },
   module: {
-    rules: utils.styleLoaders({
+    rules: [
+      {
+        test: /\.js$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
+        }]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader',
+        query: {
+          limit: 10000,
+          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        }
+      }
+    ].concat(utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
       extract: true
-    })
+    }))
   },
-  devtool: config.build.productionSourceMap ? '#source-map' : false,
+  devtool: false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
@@ -32,46 +60,9 @@ var webpackConfig = merge(baseWebpackConfig, {
       }
     }),
     // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
-    // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: config.build.index,
-      template: 'index.html',
-      inject: true,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
-      },
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
-    // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
-      }
-    }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
-    })
+    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css'))
   ]
-})
+}
 
 if (config.build.productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')

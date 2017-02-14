@@ -1,4 +1,3 @@
-var path = require('path')
 var cheerio = require('cheerio')
 var hljs = require('highlight.js')
 var loaderUtils = require('loader-utils')
@@ -7,7 +6,6 @@ var markdownAnchor = require('markdown-it-anchor')
 var markdownContainer = require('markdown-it-container')
 
 var cache = require('./cache')
-var genId = require('./gen-id')
 var striptags = require('./strip-tags')
 var slugify = require('transliteration').slugify
 
@@ -173,9 +171,8 @@ module.exports = function (source) {
   var filePath = this.resourcePath
   var content = parser.render(source).replace(/__at__/g, '@')
   var result = renderVueTemplate(content)
-  var fileName = path.basename(filePath, '.md')
 
-  filePath = cache.save(fileName + '-' + genId(filePath), result)
+  filePath = cache.save(filePath, result)
 
   return 'module.exports = require(' +
     loaderUtils.stringifyRequest(this, '!!vue-loader!' + filePath) +

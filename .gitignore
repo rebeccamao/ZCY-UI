@@ -1,6 +1,6 @@
 # temp
 .DS_Store
-build/_cache
+build/custom-loaders/_cache
 
 # editor
 .idea/

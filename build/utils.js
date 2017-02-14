@@ -1,5 +1,5 @@
 var path = require('path')
-var config = require('../config')
+var config = require('./config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 exports.assetsPath = function (_path) {
@@ -29,8 +29,8 @@ exports.cssLoaders = function (options) {
     // (which is the case during production build)
     if (options.extract) {
       return ExtractTextPlugin.extract({
-        loader: sourceLoader,
-        fallbackLoader: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        use: sourceLoader
       })
     } else {
       return ['vue-style-loader', sourceLoader].join('!')
