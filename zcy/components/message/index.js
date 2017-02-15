@@ -7,7 +7,6 @@ let key = 1
 
 let messageInstance
 
-
 function getMessageInstance () {
   messageInstance = messageInstance || Message.getInstance({
     top: defaultTop

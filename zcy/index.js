@@ -10,5 +10,6 @@ let ZCY = require('./core')
 export default window.ZCY = Object.assign({
   version: '0.0.1',
   Lang,
+  Menu,
   Message
 }, ZCY)

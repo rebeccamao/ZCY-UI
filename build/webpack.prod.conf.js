@@ -2,7 +2,7 @@ var utils = require('./utils')
 var webpack = require('webpack')
 var config = require('./config')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var env = config.build.env
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 var webpackConfig = {
   entry: {
@@ -23,6 +23,17 @@ var webpackConfig = {
         }]
       },
       {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'less-loader'
+          ],
+          fallback: 'style-loader'
+        })
+      },
+      {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         query: {
@@ -38,29 +49,29 @@ var webpackConfig = {
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
       }
-    ].concat(utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: true
-    }))
+    ]
   },
   devtool: false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    filename: utils.assetsPath('[name].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    new webpack.DefinePlugin({
-      'process.env': env
-    }),
+    // extract css into its own file
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
-    // extract css into its own file
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css'))
+    new ExtractTextPlugin(utils.assetsPath('[name].css')),
+    // css 压缩
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    })
   ]
 }
 
