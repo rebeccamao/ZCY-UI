@@ -4,10 +4,10 @@
  *    https://github.com/Matt-Esch/string-template/index.js
  */
 
-const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g;
+const RE_NARGS = /(%|)\{([0-9a-zA-Z_]+)\}/g
 
-export default function(Vue) {
-  const { hasOwn } = Vue.util;
+export default function (Vue) {
+  const { hasOwn } = Vue.util
 
   /**
    * template
@@ -17,31 +17,30 @@ export default function(Vue) {
    * @return {String}
    */
 
-  function template(string, ...args) {
+  function template(string, ...argus) {
+    let args = argus
     if (args.length === 1 && typeof args[0] === 'object') {
-      args = args[0];
+      args = args[0]
     }
 
     if (!args || !args.hasOwnProperty) {
-      args = {};
+      args = {}
     }
 
     return string.replace(RE_NARGS, (match, prefix, i, index) => {
-      let result;
-
       if (string[index - 1] === '{' &&
         string[index + match.length] === '}') {
-        return i;
-      } else {
-        result = hasOwn(args, i) ? args[i] : null;
-        if (result === null || result === undefined) {
-          return '';
-        }
-
-        return result;
+        return i
       }
-    });
+
+      const result = hasOwn(args, i) ? args[i] : null
+      if (result === null || result === undefined) {
+        return ''
+      }
+
+      return result
+    })
   }
 
-  return template;
+  return template
 }

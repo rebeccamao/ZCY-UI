@@ -14,15 +14,13 @@ module.exports = {
         }
     },
     extends: 'airbnb-base',
-    // required to lint *.vue files
-    plugins: [
-        'html'
-    ],
     // add your custom rules here
     'rules': {
         'import/no-unresolved': 0,
         //缩进
-        'indent': ['error', 4],
+        'indent': ['error', 2],
+        //不用分号
+        'semi': 0,
         //结尾禁用逗号
         'comma-dangle': 0,
         //允许使用匿名函数

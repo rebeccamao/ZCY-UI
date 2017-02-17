@@ -44,6 +44,12 @@ var webpackConfig = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js?$/,
+        loader: 'eslint-loader',
+        include: [resolve('zcy')]
+      },
+      {
         test: /\.md/,
         loader: 'markdown-loader'
       },

@@ -1,5 +1,5 @@
 import './style/index.less'
-import Message from './message.js'
+import Message from './message'
 
 let defaultDuration = 3
 let defaultTop = 24
@@ -7,7 +7,7 @@ let key = 1
 
 let messageInstance
 
-function getMessageInstance () {
+function getMessageInstance() {
   messageInstance = messageInstance || Message.getInstance({
     top: defaultTop
   })
@@ -15,8 +15,8 @@ function getMessageInstance () {
   return messageInstance
 }
 
-function notice (content, duration = defaultDuration, onClose = $.noop, type = 'success') {
-  let instance = getMessageInstance()
+function notice(content, duration = defaultDuration, onClose = $.noop, type = 'success') {
+  const instance = getMessageInstance()
   instance.notice({
     key,
     duration,
@@ -26,30 +26,31 @@ function notice (content, duration = defaultDuration, onClose = $.noop, type = '
   })
 
   return (function () {
-    let target = key++
+    key += 1
+    const target = key
     return function () {
       instance.removeNotice(target)
     }
-  })()
+  }())
 }
 
 export default {
-  info (content, duration, onClose) {
+  info(content, duration, onClose) {
     return notice(content, duration, onClose, 'info')
   },
-  success (content, duration, onClose) {
+  success(content, duration, onClose) {
     return notice(content, duration, onClose, 'success')
   },
-  warning (content, duration, onClose) {
+  warning(content, duration, onClose) {
     return notice(content, duration, onClose, 'waring')
   },
-  error (content, duration, onClose) {
+  error(content, duration, onClose) {
     return notice(content, duration, onClose, 'error')
   },
-  loading (content, duration, onClose) {
+  loading(content, duration, onClose) {
     return notice(content, duration, onClose, 'loading')
   },
-  config (options) {
+  config(options) {
     if (options.top) {
       defaultTop = options.top
       // delete messageInstance for new defaultTop
@@ -59,7 +60,7 @@ export default {
       defaultDuration = options.duration
     }
   },
-  destroy () {
+  destroy() {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null

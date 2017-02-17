@@ -1,24 +1,25 @@
 
-import Notice from './notice.js'
+import Notice from './notice'
+
 export default {
 
-  getInstance (data) {
-    let $div = $('<div class="zcy-message"><span class="zcy-message-container"></span></div>')
+  getInstance(data) {
+    const $div = $('<div class="zcy-message"><span class="zcy-message-container"></span></div>')
     $('body').append($div)
     if (data.top) {
       $div.css('top', data.top)
     }
 
     return {
-      notice (props) {
+      notice(props) {
         return Notice.add(props, $div.find('.zcy-message-container'))
       },
 
-      removeNotice (key) {
+      removeNotice(key) {
         return Notice.remove(key)
       },
 
-      destroy () {
+      destroy() {
         $div.remove()
       }
     }

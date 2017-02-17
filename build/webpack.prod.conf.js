@@ -14,6 +14,12 @@ var webpackConfig = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js?$/,
+        loader: 'eslint-loader',
+        include: [resolve('zcy')]
+      },
+      {
         test: /\.js$/,
         use: [{
           loader: 'babel-loader',
