@@ -3,7 +3,7 @@ import App from './App'
 import VueRouter from 'vue-router'
 import 'highlight.js/styles/solarized-light.css'
 
-// import $ from 'jquery'
+import $ from 'jquery'
 
 import './style/index.less'
 

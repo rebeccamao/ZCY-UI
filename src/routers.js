@@ -12,6 +12,11 @@ export default [
         path: 'message',
         name: 'message',
         component: require('../zcy/components/message/message.md')
+      },
+      {
+        path: 'notification',
+        name: 'notification',
+        component: require('../zcy/components/notification/notification.md')
       }
     ]
   }
