@@ -3,7 +3,7 @@ function getIconClass(type) {
   switch (type) {
   case 'success':
     return 'icon-shuruzhengquetishi'
-  case 'waring':
+  case 'warning':
     return 'icon-shurujinggaotishi'
   case 'error':
     return 'icon-shurucuowutishi2'

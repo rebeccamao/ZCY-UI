@@ -42,7 +42,7 @@ export default {
     return notice(content, duration, onClose, 'success')
   },
   warning(content, duration, onClose) {
-    return notice(content, duration, onClose, 'waring')
+    return notice(content, duration, onClose, 'warning')
   },
   error(content, duration, onClose) {
     return notice(content, duration, onClose, 'error')
