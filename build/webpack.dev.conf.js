@@ -13,8 +13,6 @@ function resolve (dir) {
 
 var webpackConfig = {
   entry: {
-    jquery: 'jquery',
-    handlebars: 'handlebars',
     app: './src/main.js'
   },
   output: {
@@ -30,9 +28,10 @@ var webpackConfig = {
     ],
     alias: {
       'vue': 'vue/dist/vue.common.js',
-      'handlebars': 'handlebars/dist/handlebars.min.js',
+      // 'handlebars': 'handlebars/dist/handlebars.runtime.js',
       'jquery': 'jquery/jquery.js',
       'src': resolve('src'),
+      'zcy': resolve('zcy'),
       'assets': resolve('src/assets'),
       'components': resolve('src/components'),
       'views': resolve('src/views')
@@ -66,6 +65,16 @@ var webpackConfig = {
               browsers: ['last 2 versions']
             })
           ]
+        }
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        query: {
+          debug: true,
+          // rootRelative: resolve('zcy/handlebars')
+          helperDirs: [resolve('zcy/handlebars/helpers')],
+          partialDirs: [resolve('zcy/handlebars/partials')]
         }
       },
       {
