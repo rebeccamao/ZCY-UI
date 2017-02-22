@@ -1,0 +1,17 @@
+<div class="zcy-confirm-body-wrapper">
+  <div class="zcy-confirm-body">
+      <i class="icon-zcy {{iconClass}}"></i>
+      <span class="zcy-confirm-title">{{ title }}</span>
+      <div class="zcy-confirm-content">{{ content }}</div>
+  </div>
+  {{#if okCancel}}
+    <div class="zcy-confirm-btns">
+      <button type="button" class="zcy-btn zcy-btn-lg zcy-btn-cancel"><span>{{cancelText}}</span></button>
+      <button type="button" class="zcy-btn zcy-btn-primary zcy-btn-lg zcy-btn-ok"><span>{{okText}}</span></button>
+    </div>
+  {{else}}
+    <div class="zcy-confirm-btns">
+      <button type="button" class="zcy-btn zcy-btn-primary zcy-btn-lg zcy-btn-ok"><span>{{okText}}</span></button>
+    </div>
+  {{/if}}
+</div>

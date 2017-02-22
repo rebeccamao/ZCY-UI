@@ -8,6 +8,9 @@
                 <router-link :to="{ name:'message'}">message</router-link>
             </v-menu-item>
             <v-menu-item>
+                <router-link :to="{ name:'modal'}">modal</router-link>
+            </v-menu-item>
+            <v-menu-item>
                 <router-link :to="{ name:'notification'}">notification</router-link>
             </v-menu-item>
           </v-submenu>
