@@ -5,6 +5,11 @@
         <v-menu mode="inline">
           <v-submenu title="General">
             <v-menu-item>
+                <router-link :to="{ name:'button'}">button</router-link>
+            </v-menu-item>
+          </v-submenu>
+          <v-submenu title="Feedback">
+            <v-menu-item>
                 <router-link :to="{ name:'message'}">message</router-link>
             </v-menu-item>
             <v-menu-item>
@@ -13,7 +18,7 @@
             <v-menu-item>
                 <router-link :to="{ name:'notification'}">notification</router-link>
             </v-menu-item>
-          </v-submenu>
+            </v-submenu>
         </v-menu>
       </div>
       <div class="main-container zcy-col-xs-24 zcy-col-sm-24 zcy-col-md-18 zcy-col-lg-20">
@@ -166,5 +171,7 @@
     .header-anchor {
         margin-left: -18px;
     }
+
+
 
 </style>

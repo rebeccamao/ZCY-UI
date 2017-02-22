@@ -9,6 +9,11 @@ export default [
     component: require('./views/components.vue'),
     children: [
       {
+        path: 'button',
+        name: 'button',
+        component: require('../zcy/components/button/button.md')
+      },
+      {
         path: 'message',
         name: 'message',
         component: require('../zcy/components/message/message.md')
