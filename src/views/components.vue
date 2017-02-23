@@ -8,6 +8,11 @@
                 <router-link :to="{ name:'button'}">button</router-link>
             </v-menu-item>
           </v-submenu>
+          <v-submenu title="Data Display">
+            <v-menu-item>
+                <router-link :to="{ name:'popover'}">popover</router-link>
+            </v-menu-item>
+          </v-submenu>
           <v-submenu title="Feedback">
             <v-menu-item>
                 <router-link :to="{ name:'message'}">message</router-link>

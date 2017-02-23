@@ -9,13 +9,6 @@ import dialogHbs from '../../handlebars/partials/dialog.hbs'
 const defaultWidth = 520
 
 function getProps(config) {
-  /**
-   * {
-   *    title: '',
-   *    template: '',
-   *    closable: ''
-   * }
-   */
   return $.extend({
     closable: true,
     width: defaultWidth,
@@ -47,6 +40,7 @@ export default function (config = {}) {
     return false
   }
 
+  let clickFromInner = false
   const props = getProps(config)
 
   // 如果是handlebars的compile方法
@@ -57,20 +51,33 @@ export default function (config = {}) {
   const $dialog = dialogHbs(props)
   $div.append($dialog)
 
-  $div.find('.zcy-modal-close').off('click').on('click', () => {
+  $div.find('.zcy-modal-close').off('click').click(() => {
     $div.hide()
   })
 
-  $div.find('.zcy-btn-cancel').off('click').on('click', () => {
+  $div.find('.zcy-btn-cancel').off('click').click(() => {
     // 返回false，则不关闭
     if ((props.onCancel && props.onCancel()) !== false) {
       $div.hide()
     }
   })
 
-  $div.find('.zcy-btn-ok').off('click').on('click', () => {
+  $div.find('.zcy-btn-ok').off('click').click(() => {
     // 返回false，则不关闭
     if ((props.onOk && props.onOk()) !== false) {
+      $div.hide()
+    }
+  })
+
+  $div.find('.zcy-modal').click(() => {
+    clickFromInner = true
+  })
+
+  $div.find('.zcy-modal-wrap').click(() => {
+    if (clickFromInner) {
+      clickFromInner = false
+    }
+    if (props.maskClosable) {
       $div.hide()
     }
   })
