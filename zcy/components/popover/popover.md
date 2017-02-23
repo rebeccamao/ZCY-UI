@@ -8,11 +8,6 @@
               content: '内容'
             })
           })
-
-          setTimeout(() => {
-            // 自定义内容，动态修改
-            $($('.show-popover')[0]).data('popover').setContent('<span>custom content</span>')
-          }, 2000)
         }
     }
 </script>

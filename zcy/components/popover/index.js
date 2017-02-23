@@ -1,6 +1,7 @@
 import './style/index.less'
-import './popover'
+import Popover from './popover'
+import Core from '../../core'
 
-export default {
+Core.plugin('popover', Popover)
 
-}
+export default Popover

@@ -5,23 +5,26 @@
         <v-menu mode="inline">
           <v-submenu title="General">
             <v-menu-item>
-                <router-link :to="{ name:'button'}">button</router-link>
+                <router-link :to="{ name:'button'}">button 按钮</router-link>
             </v-menu-item>
           </v-submenu>
           <v-submenu title="Data Display">
             <v-menu-item>
-                <router-link :to="{ name:'popover'}">popover</router-link>
+                <router-link :to="{ name:'popover'}">popover 气泡卡片</router-link>
+            </v-menu-item>
+            <v-menu-item>
+                <router-link :to="{ name:'tooltip'}">tooltip 文字提示</router-link>
             </v-menu-item>
           </v-submenu>
           <v-submenu title="Feedback">
             <v-menu-item>
-                <router-link :to="{ name:'message'}">message</router-link>
+                <router-link :to="{ name:'message'}">message 全局提示</router-link>
             </v-menu-item>
             <v-menu-item>
-                <router-link :to="{ name:'modal'}">modal</router-link>
+                <router-link :to="{ name:'modal'}">modal 对话框</router-link>
             </v-menu-item>
             <v-menu-item>
-                <router-link :to="{ name:'notification'}">notification</router-link>
+                <router-link :to="{ name:'notification'}">notification 通知提醒框</router-link>
             </v-menu-item>
             </v-submenu>
         </v-menu>

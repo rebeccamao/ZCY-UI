@@ -14,13 +14,20 @@ const Popover = function (element, options) {
 
 Popover.DEFAULTS = {
   trigger: 'click',
+  name: 'popover',
   content: '',
   open: false,
-  target: null
+  target: null,
+  template: popoverHbs
 }
 
 Popover.prototype.init = function () {
-  this.options.template = popoverHbs(this.options)
+  if (!this.options.template) {
+    throw new Error('请正确填写popover的template')
+  }
+  if ($.isFunction(this.options.template)) {
+    this.options.template = this.options.template(this.options)
+  }
   if (!this.options.target) {
     this.$popover = this.getPopover()
   }
@@ -75,7 +82,7 @@ Popover.prototype.getRelativeOffset = function () {
       placement = 'top'
     }
     // 默认没有的情况下，需要添加class
-    $popover.addClass(`zcy-popover-placement-${placement}`)
+    $popover.addClass(`zcy-${this.options.name}-placement-${placement}`)
   }
 
   const offset = { top: '', left: '' }
@@ -129,25 +136,25 @@ Popover.prototype.open = function () {
 Popover.prototype.close = function () {
   this.$popover
     .removeClass('zcy-active')
-    .trigger('closed.popover.zcy')
+    .trigger(`closed.${this.options.name}.zcy`)
     .hide()
 
   this.active = false
 }
 
 Popover.prototype.getPopover = function () {
-  const uid = Core.generateGUID('zcy-popover')
+  const uid = Core.generateGUID(`zcy-${this.options.name}`)
   return $(this.options.template).attr('id', uid)
 }
 
 Popover.prototype.setContent = function (content) {
   if (this.$popover) {
-    this.$popover.find('.zcy-popover-inner').empty().html(content)
+    this.$popover.find(`.zcy-${this.options.name}-inner`).empty().html(content)
   }
 }
 
 Popover.prototype.bindEvents = function () {
-  const eventNS = 'popover.zcy'
+  const eventNS = `${this.options.name}.zcy`
   const triggers = this.options.trigger.split(' ')
 
   $.each(triggers, (i, trigger) => {
@@ -166,10 +173,8 @@ Popover.prototype.bindEvents = function () {
 }
 
 Popover.prototype.destroy = function () {
-  this.$element.off('.popover.zcy').removeData('popover')
+  this.$element.off(`.${this.options.name}.zcy`).removeData(this.options.name)
   this.$popover.remove()
 }
-
-Core.plugin('popover', Popover)
 
 export default Popover

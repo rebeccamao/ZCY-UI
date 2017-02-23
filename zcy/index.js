@@ -9,6 +9,7 @@ import Message from './components/message/'
 import Modal from './components/modal/'
 import Notification from './components/notification/'
 import './components/popover/'
+import './components/tooltip/'
 
 const ZCY = require('./core')
 

@@ -32,6 +32,11 @@ export default [
         path: 'popover',
         name: 'popover',
         component: require('../zcy/components/popover/popover.md')
+      },
+      {
+        path: 'tooltip',
+        name: 'tooltip',
+        component: require('../zcy/components/tooltip/tooltip.md')
       }
     ]
   }
