@@ -1,20 +1,20 @@
-var fs = require('fs')
-var path = require('path')
-var rimraf = require('rimraf')
+const fs = require('fs')
+const path = require('path')
+const rimraf = require('rimraf')
 
 /**
  * https://github.com/vuejs/vue-loader/blob/next/lib/gen-id.js
  */
-var fileUid = 1
-var fileRegistry = Object.create(null)
+let fileUid = 1
+let fileRegistry = Object.create(null)
 
 function genId (file) {
   return fileRegistry[file] || (fileRegistry[file] = fileUid++)
 }
-var cachePath = path.join(__dirname, './_cache')
-var cache = {
-  save (filePath, content) {
-    var filename = path.basename(filePath, '.md') + '-' + genId(filePath)
+const cachePath = path.join(__dirname, './_cache')
+const cache = {
+  save (name, content) {
+    const filename = name + '-' + genId(name)
     filePath = path.join(cachePath, filename + '.vue')
 
 

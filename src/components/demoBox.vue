@@ -30,13 +30,17 @@ export default {
   },
 };
 </script>
-<style scoped lang="less">
+<style lang="less">
 .box-demo{
   padding: 0;
   border: 1px solid #e9e9e9;
   border-radius: 4px;
   box-shadow: none;
   margin-bottom: 20px;
+  .zcy-btn {
+    margin-right: 8px;
+    margin-bottom: 8px;
+  }
 }
 .box-demo-show{
   padding: 20px 25px 30px;
@@ -87,6 +91,9 @@ export default {
   transition: height .2s ease-in-out;
   overflow: auto;
   border-top: 1px dashed #e9e9e9;
+  pre,code{
+    background-color: #fff;
+  }
 }
 .btn-toggle{
   position: absolute;
@@ -111,12 +118,11 @@ export default {
   }
 }
 
-</style>
-
-<style lang="less">
-  .box-demo-code{
-    pre,code{
-      background-color: #fff;
-    }
+// popover
+.zcy-popover-demo {
+  .zcy-btn {
+    width: 70px;
   }
+}
+
 </style>

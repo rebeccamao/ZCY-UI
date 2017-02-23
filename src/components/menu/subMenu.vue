@@ -71,7 +71,7 @@ export default {
         if(parent.$options.name == 'vSubmenu') index++;
         parent = parent.$parent;
       }
-      console.log(parent.mode)
+
       this.mode = parent.mode;
       this.level = index;
     },

@@ -27,6 +27,11 @@ export default [
         path: 'notification',
         name: 'notification',
         component: require('../zcy/components/notification/notification.md')
+      },
+      {
+        path: 'popover',
+        name: 'popover',
+        component: require('../zcy/components/popover/popover.md')
       }
     ]
   }

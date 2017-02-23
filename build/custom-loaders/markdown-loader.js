@@ -1,20 +1,21 @@
-var cheerio = require('cheerio')
-var hljs = require('highlight.js')
-var loaderUtils = require('loader-utils')
-var markdown = require('markdown-it')
-var markdownAnchor = require('markdown-it-anchor')
-var markdownContainer = require('markdown-it-container')
+const cheerio = require('cheerio')
+const path = require('path')
+const hljs = require('highlight.js')
+const loaderUtils = require('loader-utils')
+const markdown = require('markdown-it')
+const markdownAnchor = require('markdown-it-anchor')
+const markdownContainer = require('markdown-it-container')
 
-var cache = require('./cache')
-var striptags = require('./strip-tags')
-var slugify = require('transliteration').slugify
+const cache = require('./cache')
+const striptags = require('./strip-tags')
+const slugify = require('transliteration').slugify
 
 /**
  * `{{ }}` => `<span>{{</span> <span>}}</span>`
  * @param  {string} str
  * @return {string}
  */
-var replaceDelimiters = function (str) {
+const replaceDelimiters = function (str) {
   return str.replace(/({{|}})/g, '<span>$1</span>')
 }
 
@@ -23,7 +24,7 @@ var replaceDelimiters = function (str) {
  * @param  {string} str
  * @param  {string} lang
  */
-var renderHighlight = function (str, lang) {
+const renderHighlight = function (str, lang) {
   if (!(lang && hljs.getLanguage(lang))) {
     return ''
   }
@@ -38,23 +39,22 @@ var renderHighlight = function (str, lang) {
  * @param  {[type]} html [description]
  * @return {[type]}      [description]
  */
-var renderVueTemplate = function (html) {
-  var $ = cheerio.load(html, {
+const renderVueTemplate = function (html) {
+  const $ = cheerio.load(html, {
     decodeEntities: false,
     lowerCaseAttributeNames: false,
     lowerCaseTags: false
   })
 
-  var output = {
+  const output = {
     style: $.html('style'),
     script: $.html('script')
   }
-  var result
 
   $('style').remove()
   $('script').remove()
 
-  result = '<template><section>' + $.html() + '</section></template>\n' +
+  let result = '<template><section>' + $.html() + '</section></template>\n' +
     output.style + '\n' +
     output.script
 
@@ -79,10 +79,14 @@ function wrap (render) {
 module.exports = function (source) {
   this.cacheable()
 
-  var parser
-  var params = loaderUtils.parseQuery(this.query)
-  var opts = Object.assign(params, this.vueMarkdown, this.options.vueMarkdown)
+  let filePath = this.resourcePath
+  const componentName = path.basename(filePath, '.md')
 
+  let parser
+  let params = loaderUtils.parseQuery(this.query)
+  let opts = Object.assign(params, this.vueMarkdown, this.options.vueMarkdown)
+
+  let preprocess
   if ({}.toString.call(opts.render) === '[object Function]') {
     parser = opts
   } else {
@@ -93,8 +97,8 @@ module.exports = function (source) {
       highlight: renderHighlight
     }, opts)
 
-    var plugins = opts.use
-    var preprocess = opts.preprocess
+    let plugins = opts.use
+    preprocess = opts.preprocess
 
     delete opts.use
     delete opts.preprocess
@@ -113,26 +117,24 @@ module.exports = function (source) {
       },
 
       render: function (tokens, idx) {
-        // var m = tokens[idx].info.trim().match(/^demo\s*(.*)$/);
         if (tokens[idx].nesting === 1) {
-          // var description = (m && m.length > 1) ? m[1] : '';
-          var summaryContent = tokens[idx + 1].content
-          var summary = striptags.fetch(summaryContent, 'summary')
-          var summaryHTML = summary ? parser.render(summary) : ''
+          let summaryContent = tokens[idx + 1].content
+          let summary = striptags.fetch(summaryContent, 'summary')
+          let summaryHTML = summary ? parser.render(summary) : ''
 
-          var content = tokens[idx + 2].content
-          var html = convert(striptags.strip(content, ['script', 'style'])).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
-          var script = striptags.fetch(content, 'script')
-          var style = striptags.fetch(content, 'style')
-          var code = tokens[idx + 2].markup + tokens[idx + 2].info + '\n' + content + tokens[idx + 2].markup
-          var codeHtml = code ? parser.render(code) : ''
+          let content = tokens[idx + 2].content
+          let html = convert(striptags.strip(content, ['script', 'style'])).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
+          let script = striptags.fetch(content, 'script')
+          let style = striptags.fetch(content, 'style')
+          let code = tokens[idx + 2].markup + tokens[idx + 2].info + '\n' + content + tokens[idx + 2].markup
+          let codeHtml = code ? parser.render(code) : ''
 
-          var jsfiddle = { html: html, script: script, style: style }
+          let jsfiddle = { html: html, script: script, style: style }
           jsfiddle = parser.utils.escapeHtml(JSON.stringify(jsfiddle))
 
           // opening tag
           return `<demo-box :jsfiddle="${jsfiddle}">
-                      <div class="box-demo-show" slot="component">${html}</div>
+                      <div class="box-demo-show zcy-${componentName}-demo" slot="component">${html}</div>
                       <div slot="description">${summaryHTML}</div>
                       <div class="highlight" slot="code">${codeHtml}</div>
                     `
@@ -154,7 +156,7 @@ module.exports = function (source) {
     }
   }
 
-  var codeInlineRender = parser.renderer.rules.code_inline
+  let codeInlineRender = parser.renderer.rules.code_inline
   parser.renderer.rules.code_inline = function () {
     return replaceDelimiters(codeInlineRender.apply(this, arguments))
   }
@@ -168,11 +170,11 @@ module.exports = function (source) {
   }
   source = source.replace(/@/g, '__at__')
 
-  var filePath = this.resourcePath
-  var content = parser.render(source).replace(/__at__/g, '@')
-  var result = renderVueTemplate(content)
 
-  filePath = cache.save(filePath, result)
+  let content = parser.render(source).replace(/__at__/g, '@')
+  let result = renderVueTemplate(content)
+
+  filePath = cache.save(componentName, result)
 
   return 'module.exports = require(' +
     loaderUtils.stringifyRequest(this, '!!vue-loader!' + filePath) +
