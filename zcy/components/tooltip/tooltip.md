@@ -55,6 +55,15 @@
       </div>
     </div>
   </div>
+
+   <script>
+    $('.js-show-tooltip').each((i, item) => {
+      $(item).tooltip({
+        placement: $(item).data('placement'),
+        content: '内容'
+      })
+    })
+  </script>
 </template>
 ```
 :::

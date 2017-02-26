@@ -64,12 +64,12 @@ var webpackConfig = {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
-    // extract css into its own file
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       }
     }),
+    // 抽取css到单独文件
     new ExtractTextPlugin(utils.assetsPath('[name].css')),
     // css 压缩
     new OptimizeCssAssetsPlugin({

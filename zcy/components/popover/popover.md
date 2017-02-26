@@ -1,7 +1,7 @@
 <script>
     export default {
         mounted () {
-          $('.show-popover').each((i, item) => {
+          $('.js-show-popover').each((i, item) => {
             $(item).popover({
               title: 'title',
               placement: $(item).data('placement'),
@@ -35,27 +35,36 @@
   <div class="zcy-row">
     <div class="zcy-col-11">
       <div style="margin-left: 70px; white-space: nowrap;">
-        <button class="zcy-btn show-popover" data-placement="topLeft">TL</button>
-        <button class="zcy-btn show-popover" data-placement="top">Top</button>
-        <button class="zcy-btn show-popover" data-placement="topRight">TR</button>
+        <button class="zcy-btn js-show-popover" data-placement="topLeft">TL</button>
+        <button class="zcy-btn js-show-popover" data-placement="top">Top</button>
+        <button class="zcy-btn js-show-popover" data-placement="topRight">TR</button>
       </div>
       <div style="width: 70px; float: left;">
-        <button class="zcy-btn show-popover" data-placement="leftTop">LT</button>
-        <button class="zcy-btn show-popover" data-placement="left">Left</button>
-        <button class="zcy-btn show-popover" data-placement="leftBottom">LB</button>
+        <button class="zcy-btn js-show-popover" data-placement="leftTop">LT</button>
+        <button class="zcy-btn js-show-popover" data-placement="left">Left</button>
+        <button class="zcy-btn js-show-popover" data-placement="leftBottom">LB</button>
       </div>
       <div style="width: 70px; float: right;">
-        <button class="zcy-btn show-popover" data-placement="rightTop">RT</button>
-        <button class="zcy-btn show-popover" data-placement="right">Right</button>
-        <button class="zcy-btn show-popover" data-placement="rightBottom">RB</button>
+        <button class="zcy-btn js-show-popover" data-placement="rightTop">RT</button>
+        <button class="zcy-btn js-show-popover" data-placement="right">Right</button>
+        <button class="zcy-btn js-show-popover" data-placement="rightBottom">RB</button>
       </div>
       <div style="margin-left: 70px; clear: both; white-space: nowrap;">
-        <button class="zcy-btn show-popover" data-placement="bottomLeft">BL</button>
-        <button class="zcy-btn show-popover" data-placement="bottom">Bottom</button>
-        <button class="zcy-btn show-popover" data-placement="bottomRight">BR</button>
+        <button class="zcy-btn js-show-popover" data-placement="bottomLeft">BL</button>
+        <button class="zcy-btn js-show-popover" data-placement="bottom">Bottom</button>
+        <button class="zcy-btn js-show-popover" data-placement="bottomRight">BR</button>
       </div>
     </div>
   </div>
+  <script>
+    $('.js-show-popover').each((i, item) => {
+      $(item).popover({
+        title: 'title',
+        placement: $(item).data('placement'),
+        content: '内容'
+      })
+    })
+  </script>
 </template>
 ```
 :::
