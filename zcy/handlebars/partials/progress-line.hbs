@@ -1,0 +1,10 @@
+<div class="zcy-progress zcy-progress-line zcy-progress-status-{{status}} {{#if showInfo}}zcy-progress-show-info{{/if}}">
+  <div>
+    <div class="zcy-progress-outer">
+      <div class="zcy-progress-inner">
+        <div class="zcy-progress-bg"></div>
+      </div>
+      {{!--不能换行，不然会导致文本与进度条换行--}}
+    </div>{{#if showInfo}}<span class="zcy-progress-text">{{percent}}%</span>{{/if}}
+  </div>
+</div>

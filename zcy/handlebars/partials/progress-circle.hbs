@@ -1,0 +1,14 @@
+<div class="zcy-progress zcy-progress-circle zcy-progress-status-{{status}}
+{{#if showInfo}}zcy-progress-show-info{{/if}}">
+  <div class="zcy-progress-inner" style="width: 132px; height: 132px; font-size: 27.12px;">
+    <svg class="rc-progress-circle " viewBox="0 0 100 100">
+      <path class="rc-progress-circle-trail" d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-width="{{strokeWidth}}" fill-opacity="0"></path>
+     <path class="rc-progress-circle-path" d="M 50,50 m 0,-47
+     a 47,47 0 1 1 0,94
+     a 47,47 0 1 1 0,-94" stroke-linecap="round" stroke="#108ee9" stroke-width="{{strokeWidth}}" fill-opacity="0" style="stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 73.8274px; transition: stroke-dashoffset 0.3s ease 0s, stroke 0.3s ease;"></path>
+    </svg>
+    <span class="zcy-progress-text">{{percent}}%</span>
+  </div>
+</div>

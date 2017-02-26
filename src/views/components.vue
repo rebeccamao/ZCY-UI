@@ -26,6 +26,9 @@
             <v-menu-item>
                 <router-link :to="{ name:'notification'}">notification 通知提醒框</router-link>
             </v-menu-item>
+            <v-menu-item>
+                <router-link :to="{ name:'progress'}">Progress 进度条</router-link>
+            </v-menu-item>
             </v-submenu>
         </v-menu>
       </div>

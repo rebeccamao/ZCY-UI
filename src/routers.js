@@ -29,6 +29,11 @@ export default [
         component: require('../zcy/components/notification/notification.md')
       },
       {
+        path: 'progress',
+        name: 'progress',
+        component: require('../zcy/components/progress/progress.md')
+      },
+      {
         path: 'popover',
         name: 'popover',
         component: require('../zcy/components/popover/popover.md')
