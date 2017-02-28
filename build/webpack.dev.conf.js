@@ -7,10 +7,6 @@ var merge = require('webpack-merge')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
-
 var webpackConfig = {
   entry: {
     app: './src/main.js'
@@ -23,18 +19,19 @@ var webpackConfig = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     modules: [
-      resolve('src'),
-      resolve('node_modules')
+      utils.resolve('src'),
+      utils.resolve('node_modules')
     ],
     alias: {
-      'vue': 'vue/dist/vue.common.js',
-      // 'handlebars': 'handlebars/dist/handlebars.runtime.js',
-      'jquery': 'jquery/jquery.js',
-      'src': resolve('src'),
-      'zcy': resolve('zcy'),
-      'assets': resolve('src/assets'),
-      'components': resolve('src/components'),
-      'views': resolve('src/views')
+      vue: 'vue/dist/vue.common.js',
+      jquery: 'jquery/jquery.js',
+      src: utils.resolve('src'),
+      zcy: utils.resolve('zcy'),
+      assets: utils.resolve('src/assets'),
+      components: utils.resolve('src/components'),
+      views: utils.resolve('src/views'),
+      plupload: 'plupload/js/plupload.dev.js',
+      moxie: 'plupload/js/moxie.js',
     }
   },
   resolveLoader: {
@@ -46,7 +43,7 @@ var webpackConfig = {
         enforce: 'pre',
         test: /\.js?$/,
         loader: 'eslint-loader',
-        include: [resolve('zcy')]
+        include: [utils.resolve('zcy')]
       },
       {
         test: /\.md/,
@@ -73,14 +70,14 @@ var webpackConfig = {
         query: {
           debug: true,
           // rootRelative: resolve('zcy/handlebars')
-          helperDirs: [resolve('zcy/handlebars/helpers')],
-          partialDirs: [resolve('zcy/handlebars/partials')]
+          helperDirs: [utils.resolve('zcy/handlebars/helpers')],
+          partialDirs: [utils.resolve('zcy/handlebars/partials')]
         }
       },
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [utils.resolve('src'), utils.resolve('test')]
       },
       {
         test: /\.json$/,

@@ -17,7 +17,7 @@ var webpackConfig = {
         enforce: 'pre',
         test: /\.js?$/,
         loader: 'eslint-loader',
-        include: [resolve('zcy')]
+        include: [utils.resolve('zcy')]
       },
       {
         test: /\.js$/,
@@ -38,6 +38,16 @@ var webpackConfig = {
           ],
           fallback: 'style-loader'
         })
+      },
+      {
+        test: /\.hbs$/,
+        loader: 'handlebars-loader',
+        query: {
+          debug: true,
+          // rootRelative: resolve('zcy/handlebars')
+          helperDirs: [utils.resolve('zcy/handlebars/helpers')],
+          partialDirs: [utils.resolve('zcy/handlebars/partials')]
+        }
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
