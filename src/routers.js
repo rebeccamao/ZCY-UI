@@ -42,6 +42,11 @@ export default [
         path: 'tooltip',
         name: 'tooltip',
         component: require('../zcy/components/tooltip/tooltip.md')
+      },
+      {
+        path: 'upload',
+        name: 'upload',
+        component: require('../zcy/components/upload/upload.md')
       }
     ]
   }
