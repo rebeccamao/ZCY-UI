@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ZCY-UI</title>
+    <link rel="stylesheet" type="text/css" href="./zcy-ui.css">
+    <script src="./jquery.js"></script>
+    <script src="./handlebars.js"></script>
+</head>
+
+<body style="background: rgb(236, 236, 236);">
+    <div data-v-b4a820f4="" class="page-wrapper">
+        <header data-v-b4a820f4="" class="clearfix">
+            <div data-v-b4a820f4="" class="zcy-row">
+                <div data-v-b4a820f4="" class="zcy-col-xs-24 zcy-col-sm-7 zcy-col-md-6 zcy-col-lg-4">
+                    <a data-v-b4a820f4="" id="logo" href="https://github.com/ZCY-frontend/ZCY-UI" target="_blank" title="github"><img data-v-b4a820f4="" alt="logo" src="/static/img/zcy-logo.94158fc.png"> <span data-v-b4a820f4="">ZCY-UI-Jquery</span></a>
+                </div>
+            </div>
+            <div data-v-b4a820f4="" class="nav zcy-col-xs-0 zcy-col-sm-17 zcy-col-md-18 zcy-col-lg-20"></div>
+        </header>
+        <div class="main-wrapper page-container" keep-alive="" data-v-b4a820f4="">
+            <div class="zcy-row">
+                <div class="aside-container zcy-col-xs-24 zcy-col-sm-24 zcy-col-md-6 zcy-col-lg-4">
+                    <ul class="zcy-menu zcy-menu-inline zcy-menu-light zcy-menu-root">
+                        <li class="zcy-menu-submenu zcy-menu-submenu-inline zcy-menu-submenu-open">
+                            <div class="zcy-menu-submenu-title" style="padding-left: 24px;"><span><!----> <span>General</span></span>
+                            </div>
+                            <ul class="zcy-menu zcy-menu-inline zcy-menu-sub">
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/button" class="">button 按钮</a></li>
+                            </ul>
+                        </li>
+                        <li class="zcy-menu-submenu zcy-menu-submenu-inline zcy-menu-submenu-open">
+                            <div class="zcy-menu-submenu-title" style="padding-left: 24px;"><span><!----> <span>Data Display</span></span>
+                            </div>
+                            <ul class="zcy-menu zcy-menu-inline zcy-menu-sub">
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/popover" class="">popover 气泡卡片</a></li>
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/tooltip" class="router-link-active">tooltip 文字提示</a></li>
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/upload" class="">upload 文件上传</a></li>
+                            </ul>
+                        </li>
+                        <li class="zcy-menu-submenu zcy-menu-submenu-inline zcy-menu-submenu-open">
+                            <div class="zcy-menu-submenu-title" style="padding-left: 24px;"><span><!----> <span>Feedback</span></span>
+                            </div>
+                            <ul class="zcy-menu zcy-menu-inline zcy-menu-sub">
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/message" class="">message 全局提示</a></li>
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/modal" class="">modal 对话框</a></li>
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/notification" class="">notification 通知提醒框</a></li>
+                                <li class="zcy-menu-item">
+                                    <!----><a href="#/components/progress" class="">Progress 进度条</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="main-container zcy-col-xs-24 zcy-col-sm-24 zcy-col-md-18 zcy-col-lg-20">
+                    <section keep-alive="" class="markdown">
+                        <h1>Tooltip 文字提示</h1>
+                        <p>简单的文字提示气泡框。</p>
+                        <h2 id="he-shi-shi-yong"><a href="#he-shi-shi-yong" aria-hidden="true" class="header-anchor">¶</a> 何时使用</h2>
+                        <p>鼠标移入则显示提示，移出消失，气泡浮层不承载复杂文本和操作。</p>
+                        <p>可用来代替系统默认的 <code>title</code> 提示，提供一个<code>按钮/文字/操作</code>的文案解释。</p>
+                        <h2 id="dai-ma-yan-shi"><a href="#dai-ma-yan-shi" aria-hidden="true" class="header-anchor">¶</a> 代码演示</h2>
+                        <div class="box box-demo">
+                            <div class="box-demo-show zcy-tooltip-demo">
+                                <div class="zcy-row">
+                                    <div class="zcy-col-11">
+                                        <div style="margin-left: 70px; white-space: nowrap;"><button data-placement="topLeft" class="zcy-btn js-show-tooltip">TL</button>
+                                            <button data-placement="top" class="zcy-btn js-show-tooltip">Top</button>
+                                            <button
+                                                data-placement="topRight" class="zcy-btn js-show-tooltip">TR</button>
+                                        </div>
+                                        <div style="width: 70px; float: left;"><button data-placement="leftTop" class="zcy-btn js-show-tooltip">LT</button>
+                                            <button data-placement="left" class="zcy-btn js-show-tooltip">Left</button>
+                                            <button
+                                                data-placement="leftBottom" class="zcy-btn js-show-tooltip">LB</button>
+                                        </div>
+                                        <div style="width: 70px; float: right;"><button data-placement="rightTop" class="zcy-btn js-show-tooltip">RT</button>
+                                            <button data-placement="right" class="zcy-btn js-show-tooltip">Right</button>                                            <button data-placement="rightBottom" class="zcy-btn js-show-tooltip">RB</button></div>
+                                        <div style="margin-left: 70px; clear: both; white-space: nowrap;"><button data-placement="bottomLeft" class="zcy-btn js-show-tooltip">BL</button>
+                                            <button data-placement="bottom" class="zcy-btn js-show-tooltip">Bottom</button>                                            <button data-placement="bottomRight" class="zcy-btn js-show-tooltip">BR</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-demo-description">
+                                <div>
+                                    <h4 id="ji-ben"><a href="#ji-ben" aria-hidden="true" class="header-anchor">¶</a> 基本</h4>
+                                    <p>最简单的用法，浮层的大小由内容区域决定。</p>
+                                </div> <span class="btn-toggle"><i class="anticon anticon-down-circle-o"></i></span></div>
+                            <div class="box-demo-code" style="display: none;">
+                                <div class="highlight">
+                                    <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-col-11"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-left: 70px; white-space: nowrap;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"topLeft"</span>&gt;</span>TL<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"top"</span>&gt;</span>Top<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"topRight"</span>&gt;</span>TR<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 70px; float: left;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"leftTop"</span>&gt;</span>LT<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"left"</span>&gt;</span>Left<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"leftBottom"</span>&gt;</span>LB<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 70px; float: right;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"rightTop"</span>&gt;</span>RT<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"right"</span>&gt;</span>Right<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"rightBottom"</span>&gt;</span>RB<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"margin-left: 70px; clear: both; white-space: nowrap;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"bottomLeft"</span>&gt;</span>BL<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"bottom"</span>&gt;</span>Bottom<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"zcy-btn js-show-tooltip"</span> <span class="hljs-attr">data-placement</span>=<span class="hljs-string">"bottomRight"</span>&gt;</span>BR<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+   <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    $(<span class="hljs-string">'.js-show-tooltip'</span>).each(<span class="hljs-function">(<span class="hljs-params">i, item</span>) =&gt;</span> {
+      $(item).tooltip({
+        <span class="hljs-attr">placement</span>: $(item).data(<span class="hljs-string">'placement'</span>),
+        <span class="hljs-attr">content</span>: <span class="hljs-string">'内容'</span>
+      })
+    })
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        <h2 id="api"><a href="#api" aria-hidden="true" class="header-anchor">¶</a> API</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>参数</th>
+                                    <th>说明</th>
+                                    <th>类型</th>
+                                    <th>默认值</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>title</td>
+                                    <td>卡片标题</td>
+                                    <td>string|ReactNode</td>
+                                    <td>无</td>
+                                </tr>
+                                <tr>
+                                    <td>content</td>
+                                    <td>卡片内容</td>
+                                    <td>string|ReactNode</td>
+                                    <td>无</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-topLeft" id="zcy-tooltip-74snh" style="top: 388px; left: 449.469px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-top" id="zcy-tooltip-jl1h4" style="top: 388px; left: 513.062px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-topRight" id="zcy-tooltip-9wgyi" style="top: 388px; left: 578.406px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-leftTop" id="zcy-tooltip-7ff9s" style="top: 473px; left: 320.469px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-left" id="zcy-tooltip-823yo" style="top: 506px; left: 320.469px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-leftBottom" id="zcy-tooltip-pxcs9" style="top: 539px; left: 320.469px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-rightTop" id="zcy-tooltip-xzof7" style="top: 473px; left: 810.125px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-right" id="zcy-tooltip-d5iiq" style="top: 506px; left: 825.125px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-rightBottom" id="zcy-tooltip-zk4k3" style="top: 539px; left: 810.125px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-bottomLeft" id="zcy-tooltip-vtcvc" style="top: 611px; left: 449.469px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-bottom" id="zcy-tooltip-byvfx" style="top: 611px; left: 523.391px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+    <div class="zcy-tooltip zcy-tooltip-hidden zcy-tooltip-placement-bottomRight" id="zcy-tooltip-bmd63" style="top: 611px; left: 598.641px;">
+        <div class="zcy-tooltip-content">
+            <div class="zcy-tooltip-arrow"></div>
+            <div class="zcy-tooltip-inner">
+                <span>内容</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./zcy-ui.js"></script>
+
+<script>
+    console.info('test...')
+    $('.js-show-tooltip').each(function(i, item) {
+        console.info($(item).tooltip)
+        $(item).tooltip({
+            placement: $(item).data('placement'),
+            content: '内容'
+        })
+    })
+</script>

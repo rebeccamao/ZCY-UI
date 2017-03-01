@@ -1,6 +1,6 @@
 import './style/index.less'
 import Popover from '../popover/'
-import Core from '../../core'
+import { plugin } from '../../core'
 
 import tooltipHbs from '../../handlebars/partials/tooltip.hbs'
 
@@ -12,6 +12,6 @@ const Tooltip = function (element, options) {
   }, options))
 }
 
-Core.plugin('tooltip', Tooltip)
+plugin('tooltip', Tooltip)
 
 export default Tooltip

@@ -29,9 +29,7 @@ var webpackConfig = {
       zcy: utils.resolve('zcy'),
       assets: utils.resolve('src/assets'),
       components: utils.resolve('src/components'),
-      views: utils.resolve('src/views'),
-      plupload: 'plupload/js/plupload.dev.js',
-      moxie: 'plupload/js/moxie.js',
+      views: utils.resolve('src/views')
     }
   },
   resolveLoader: {
@@ -77,7 +75,7 @@ var webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [utils.resolve('src'), utils.resolve('test')]
+        include: [utils.resolve('src'), utils.resolve('test'), utils.resolve('zcy')]
       },
       {
         test: /\.json$/,
@@ -107,7 +105,6 @@ var webpackConfig = {
 Object.keys(webpackConfig.entry).forEach(function (name) {
   webpackConfig.entry[name] = ['./build/dev-client'].concat(webpackConfig.entry[name])
 })
-
 
 module.exports = merge(webpackConfig, {
   module: {

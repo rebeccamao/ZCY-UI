@@ -15,6 +15,9 @@
             <v-menu-item>
                 <router-link :to="{ name:'tooltip'}">tooltip 文字提示</router-link>
             </v-menu-item>
+            <v-menu-item>
+                <router-link :to="{ name:'upload'}">upload 文件上传</router-link>
+            </v-menu-item>
           </v-submenu>
           <v-submenu title="Feedback">
             <v-menu-item>

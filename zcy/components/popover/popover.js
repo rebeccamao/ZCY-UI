@@ -1,6 +1,6 @@
 
 import popoverHbs from '../../handlebars/partials/popover.hbs'
-import Core from '../../core'
+import { generateGUID } from '../../core'
 
 const Popover = function (element, options) {
   this.options = $.extend({}, Popover.DEFAULTS, options)
@@ -143,7 +143,7 @@ Popover.prototype.close = function () {
 }
 
 Popover.prototype.getPopover = function () {
-  const uid = Core.generateGUID(`zcy-${this.options.name}`)
+  const uid = generateGUID(`zcy-${this.options.name}`)
   return $(this.options.template).attr('id', uid)
 }
 
