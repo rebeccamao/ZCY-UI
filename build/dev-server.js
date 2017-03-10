@@ -1,31 +1,41 @@
 require('./check-versions')()
 
-var config = require('./config')
+const config = require('./config')
 if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-var opn = require('opn')
-var path = require('path')
-var express = require('express')
-var webpack = require('webpack')
-var webpackConfig = require('./webpack.dev.conf')
+const opn = require('opn')
+const path = require('path')
+const express = require('express')
+const webpack = require('webpack')
+const webpackConfig = require('./webpack.dev.conf')
 const devRouter = require('./dev-router')
 
 // default port where dev server listens for incoming traffic
-var port = process.env.PORT || config.dev.port
+const port = process.env.PORT || config.dev.port
 // automatically open browser, if not set will be false
-var autoOpenBrowser = !!config.dev.autoOpenBrowser
+const autoOpenBrowser = !!config.dev.autoOpenBrowser
 
-var app = express()
-var compiler = webpack(webpackConfig)
+const app = express()
+const compiler = webpack(webpackConfig)
+const router = express.Router()
+app.use('/', router)
+// 添加路由
+devRouter(router)
 
-var devMiddleware = require('webpack-dev-middleware')(compiler, {
+// handle fallback for HTML5 history API
+app.use(require('connect-history-api-fallback')())
+
+const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
   quiet: true
 })
+// serve webpack bundle output
+app.use(devMiddleware)
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler, {
+
+const hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: () => {}
 })
 // force page reload when html-webpack-plugin template changes
@@ -35,16 +45,6 @@ compiler.plugin('compilation', function (compilation) {
     cb()
   })
 })
-
-// handle fallback for HTML5 history API
-app.use(require('connect-history-api-fallback')())
-
-// 添加路由
-devRouter(app)
-
-// serve webpack bundle output
-app.use(devMiddleware)
-
 // enable hot-reload and state-preserving
 // compilation error display
 app.use(hotMiddleware)

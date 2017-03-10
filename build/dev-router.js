@@ -32,7 +32,7 @@ function getUaaHostpath() {
 }
 
 function getMiddlePath() {
-  return 'http://middle.test.cai-inc.com'
+  return 'http://middle.dev.cai-inc.com'
 }
 
 function getOauthUri () {
@@ -66,32 +66,29 @@ function getAuthorization () {
 }
 getAuthorization()
 
-module.exports = function(app) {
-  app.all('/*', function(req, res, next) {
+module.exports = function(router) {
+  router.all('/*', (req, res, next) => {
+    console.info('请求', req.path)
     next()
   })
 
   // 文件上传测试
-  app.post('/api/test/upload', upload.array('file'), (req, res) => {
+  router.post('/api/test/upload', upload.array('file'), (req, res) => {
     console.info('files', req.files)
     if (!req.files || !req.files.length) {
       res.status(200).send({success: true})
       return
     }
-    req.files.each((file) => {
-      // 删除文件
-      fs.unlinkAsync()
-    })
     res.status(200).send({success: true})
   })
 
   // 转发zoss的请求
-  app.all('/api/zoss/*', function(req, res) {
+  router.all('/api/zoss/*', (req, res) => {
+    console.info('转发请求', req.path)
     proxy.web(req, res, {target: getMiddlePath(), changeOrigin: true})
 
     proxy.on('proxyReq', function (proxyReq, req, res, options) {
       proxyReq.setHeader('Authorization', authorizationValue)
     })
   })
-
 }
