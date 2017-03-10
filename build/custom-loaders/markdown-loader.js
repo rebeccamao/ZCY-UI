@@ -53,6 +53,7 @@ const renderVueTemplate = function (html) {
 
   $('style').remove()
   $('script').remove()
+  $('hbs').remove()
 
   let result = '<template><section>' + $.html() + '</section></template>\n' +
     output.style + '\n' +
@@ -123,7 +124,7 @@ module.exports = function (source) {
           let summaryHTML = summary ? parser.render(summary) : ''
 
           let content = tokens[idx + 2].content
-          let html = convert(striptags.strip(content, ['script', 'style'])).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
+          let html = convert(striptags.strip(content, ['script', 'style', 'hbs'])).replace(/(<[^>]*)=""(?=.*>)/g, '$1')
           let script = striptags.fetch(content, 'script')
           let style = striptags.fetch(content, 'style')
           let code = tokens[idx + 2].markup + tokens[idx + 2].info + '\n' + content + tokens[idx + 2].markup
